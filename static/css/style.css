@@ -1,0 +1,83 @@
+body{
+    background: rgb(230, 227, 227);
+}
+
+.my-card:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+
+
+
+body{
+    background: rgb(230, 227, 227);
+    background-image: url('https://png.pngtree.com/background/20210711/original/pngtree-drug-therapy-gene-technology-background-picture-image_1163637.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.my-card:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+
+
+.body {
+     background-color: #000000
+ }
+
+ .flex {
+     -webkit-box-flex: 1;
+     -ms-flex: 1 1 auto;
+     flex: 1 1 auto
+ }
+
+ @media (max-width:991.98px) {
+     .padding {
+         padding: 1.5rem
+     }
+ }
+
+ @media (max-width:767.98px) {
+     .padding {
+         padding: 1rem
+     }
+ }
+
+ .padding {
+     padding: 5rem
+ }
+
+ .card {
+     box-shadow: none;
+     -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+     -ms-box-shadow: none
+ }
+
+ .pl-3,
+ .px-3 {
+     padding-left: 1rem !important
+ }
+
+ .card {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     min-width: 0;
+     word-wrap: break-word;
+     background-color: #fff;
+     background-clip: border-box;
+     border: 1px solid #d2d2dc;
+     border-radius: 0
+ }
+
+ .card .card-title {
+     color: #000000;
+     margin-bottom: 0.625rem;
+     text-transform: capitalize;
+     font-size: 0.875rem;
+     font-weight: 1000
+ }
+
+

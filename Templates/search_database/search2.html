@@ -1,0 +1,250 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<form action="" method="POST"> 
+  {% csrf_token %}
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<nav class="navbar navbar-expand-lg navbar-light " style = "background-color:#00639A;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style = "color:whitesmoke;">Advance Search</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="navbar navbar-default visible-xs">
+  <div class="container-fluid">
+    <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">
+      <i class="fa fa-tasks"></i> Toggle Sidebar
+    </button>
+  </div>
+</div>
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <!-- filter sidebar -->
+    <div id="filter-sidebar" class="col-xs-6 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar">
+
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-1">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Artist
+        </h4>
+        <div id="group-1" class="list-group collapse in">
+          <a class="list-group-item" href="#">
+            <span class="badge">3</span> John Lennon
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">3</span> John Lennon
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">3</span> John Lennon
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">3</span> John Lennon
+          </a>
+        </div>
+      </div>      
+    </div>
+
+    <!-- table container -->
+    <h3> Results</h3>
+    <div style="height: 500px; overflow: scroll;">
+           
+      <table class="table table-success table-striped">
+        <thead style="background-color: green;">
+          <tr style = "background-color:#00639A;border: 1px solid grey;
+">
+            {%for i in columns %}
+            <th style = "font-size:13px;color:whitesmoke;">{{i}}</th>
+            {%endfor%}
+          </tr>
+        </thead>
+        <tbody>
+  {% if d %}   
+
+    {% for i in d %} 
+
+      <tr style="border: 1.5px solid grey;"> 
+
+        <td><a href="{% url 'page' i.index %}">{{i.index}}</a></td> 
+
+        <td>{{i.target_s_or_mechanism_of_action}}</td> 
+
+        <td>{{i.combination}}</td> 
+
+        <td>{{i.cancer_type}}</td> 
+
+        <td>{{i.str_link_smiles}}</td>
+        
+      </tr> 
+
+    {% endfor %} 
+
+    {% endif %} 
+          
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+<style>
+  / site specific
+.body{
+  background-color:whitesmoke;
+}
+.container-fluid {
+  max-width: 2000px;
+}
+
+// utility
+
+[data-toggle="collapse"] {
+  cursor: pointer;
+}
+
+.align-center {
+  text-align: center;
+  font-size:100px;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.valign-middle {
+  vertical-align: middle !important;
+}
+
+// responsive table override
+
+// wrap responsive table in media query
+@media screen and (max-width: 767px) {
+
+  .table-responsive {
+
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    th,
+    td {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    .align-center,
+    .align-right {
+      text-align: inherit;
+    }
+    
+    tr {
+      border-top: 1px solid #ddd;
+      
+      &:first-child {
+   
+      }
+    }
+
+    // override bootstrap's styling
+    > tbody > tr > td {
+      padding-left: 50%;
+      border-top-color: green;
+       border: 3px solid grey;
+      &:first-child {
+       
+      }
+    }
+    table, th, td {
+  border: 1px solid black;
+}
+
+    [data-label] {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 8px;
+        content: attr(data-label);
+        font-weight: bold;
+      }
+    }
+
+  }
+  
+  // a little tweaking
+  
+  .navbar-fixed-top.visible-xs + .row {
+    padding-top: 60px; // height plus padding
+  }
+  
+  .btn .visible-xs {
+    display: inline-block !important;
+  }
+  
+  .sliding-sidebar {
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    min-height: 100%;
+  
+    &.collapse,
+    &.collapsing {
+      display: block !important;
+      transform: translate3D(-100%, 0, 0);
+      transition: all 200ms;
+    }
+    
+    &.collapse.in {
+      transform: translate3D(0, 0, 0);
+     
+    }
+  }
+}
+
+.parent-expanded {
+  
+}
+.parent-collapsed {
+  display: none;
+}
+
+.collapsed {
+  .parent-expanded {
+    display: none;
+  }
+  
+  .parent-collapsed {
+    display: inline-block;
+  }
+}
+</style>
+<script>
+  if (!isTouchDevice()) {
+    $('[data-toggle*="tooltip"]').tooltip();
+  }
+  
+  // utility
+  
+  function isTouchDevice() {
+    return !!('ontouchstart' in window || navigator.msMaxTouchPoints);
+  }
+</script>

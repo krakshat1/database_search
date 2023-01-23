@@ -1,0 +1,591 @@
+{% include 'search_database/base.html'%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script type="text/javascript">
+$(document).ready(function(){
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var fieldHTML = '<div><div class="row g-3 mt-2"><div class="col-md-3"><div class="dropdown"><select name = "col-name" id="myselect"> <option disabled = "true" selected>select the columns </option><option value="index" >Index</option><option value="status" >Status</option>                             <option value="paper_number" >Paper Number</option> <option value="pmid" >Pmid</option>                               <option value="drug" >Drug</option>                                <option value="drug_id" >Drug Id</option>                                 <option value="target_s_or_mechanism_of_action" >Target/s or mechanism of action</option>                                  <option value="kegg_drug_id" >Kegg Drug Id</option>                                   <option value="drug_pubchem" >Drug Pubchem</option>                                   <option value="str_link_smiles" >Str Link Smiles</option>                                     <option value="combination" >Combination</option>                                      <option value="cancer_type" >Cancer Type</option>                                       <option value="animal_strain_used" >Animal Strain Used</option>                                        <option value="cell_line_used_to_induce_tumor_in_mice" >Cell Line Used To Induce Tumor In Mice</option><option value="dose" >Dose</option>                                          <option value="technique" >Technique</option>                                           <option value="patient_sample" >Patient Sample</option>                                           <option value="male_female" >Male Female</option>                                            <option value="median_age_range" >Median Age Range</option>                                             <option value="system" >System</option>                                              <option value="immune_cells" >Immune Cells</option>                                               <option value="cytokine" >Cytokine</option>                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>                                                 <option value="others" >Others</option>                                                  <option value="block" >Block</option>                                                   <option value="induce" >Induce</option>                                                   <option value="tertiary_remark" >Tertiary Remark</option>                                                    <option value="comment" >Comment</option>                                                    <option value="unnamed" >Unnamed</option>  </select> </div></div> <div class="col-md-6"><input type="text"  name = "texts" class="form-control" placeholder="search here"></div><div class="col-md-3">                    <select name = "fruits"><option disabled = "true" selected>select</option><option>AND</option><option>OR</option><option>NOT</option></select> </div></div>'; 
+    var x = 1; //Initial field counter is 1
+    
+    //Once add button is clicked
+    $(addButton).click(function(e){
+      e.preventDefault();
+        //Check maximum number of input fields
+        if(x < maxField){ 
+            x++; //Increment field counter
+            $(wrapper).append(fieldHTML); //Add field html
+        }
+    });
+    
+    //Once remove button is clicked
+    $(wrapper).on('click', '.remove_button', function(e){
+        e.preventDefault();
+        $(this).parent().remove(); //Remove field html
+        x--; //Decrement field counter
+    });
+});
+</script>
+
+</script>
+
+  <div class="transbox">
+    <p>Cancer is amongst the most fatal diseases causing 9.6 million deaths and an estimated 18.1 million new cases of cancer globally in 2018 (Ferlayet al, 2018). Given the mortality rate it is of prime importance for scientific community to develop anti cancer vaccines and drugs. But unfortunately onco-researchers have got limited success in developing anti cancer therapeutics/drugs/vaccines because of problems like cross-reactivity, tolerance and insufficient immune response (Igneyet al, 2002). Also, every cancerous tumor is heterogeneous having highly distinct set of mutations with limited fraction shared between diverse patients (Sahinet al, 2018). These hurdles led oncologist to tailor/develop/design personalized anticancer delivery system/medicine-a medical strategy which works by targeting the unique genetic and pathological characteristics of individual patient (Mandal et al, 2016). 
+
+</p>
+  </div>
+</div>
+</div>
+
+<div class="container mt-3" style="margin-left:180px;margin-top: 0.5px;">
+
+  <div class="row d-flex justify-content-center">
+ <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+                {% csrf_token %}
+      <div class="col-md-10">
+
+          <div class="card p-3  py-4">
+
+              <h5>Database Search</h5>                
+              <button class="add_button" style="margin-left: 700px; background-color:royalblue;">Add more searches</button>
+              <div>
+              <div class='field_wrapper'>
+   
+              <div class="row g-3 mt-2">
+
+                  <div class="col-md-3">
+
+                      <div class="dropdown">
+                        <select name = 'col-name' id = 'myselect'>
+                          <option disabled = "true" selected>select the columns </option>
+                           <option value="index" >Index</option>
+                            <option value="status" >Status</option>
+                             <option value="paper_number" >Paper Number</option>
+                              <option value="pmid" >Pmid</option>
+                               <option value="drug" >Drug</option>
+                                <option value="drug_id" >Drug Id</option>
+                                 <option value="target_s_or_mechanism_of_action" >Target/s or mechanism of action</option>
+                                  <option value="kegg_drug_id" >Kegg Drug Id</option>
+                                   <option value="drug_pubchem" >Drug Pubchem</option>
+                                   <option value="str_link_smiles" >Str Link Smiles</option>
+                                     <option value="combination" >Combination</option>
+                                      <option value="cancer_type" >Cancer Type</option>
+                                       <option value="animal_strain_used" >Animal Strain Used</option>
+                                        <option value="cell_line_used_to_induce_tumor_in_mice" >Cell Line Used To Induce Tumor In Mice</option>
+                                         <option value="dose" >Dose</option>
+                                          <option value="technique" >Technique</option>
+                                           <option value="patient_sample" >Patient Sample</option>
+                                           <option value="male_female" >Male Female</option>
+                                            <option value="median_age_range" >Median Age Range</option>
+                                             <option value="system" >System</option>
+                                              <option value="immune_cells" >Immune Cells</option>
+                                               <option value="cytokine" >Cytokine</option>
+                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>
+                                                 <option value="others" >Others</option>
+                                                  <option value="block" >Block</option>
+                                                   <option value="induce" >Induce</option>
+                                                   <option value="tertiary_remark" >Tertiary Remark</option>
+                                                    <option value="comment" >Comment</option>
+                                                    <option value="unnamed" >Unnamed</option>
+                                         
+                         
+                        
+                        </select>
+                      </div>
+                    
+                  </div>
+
+                  <div class="col-md-6">
+
+                      <input type="text"  name = 'texts' class="form-control" placeholder="search here">
+                      
+                  </div>
+
+                  <div class="col-md-3">
+
+                    <select name = 'fruits'>
+                      <option disabled = "true" selected>select</option>
+                      <option>AND</option>
+                      <option>OR</option>
+                      <option>NOT</option>
+                    </select>
+                    
+                     
+                  </div>
+                   
+                
+              </div>
+              <div class="row g-2 mt-1">
+
+                  <div class="col-md-3">
+
+                      <div class="dropdown">
+                        <select name = 'col-name' id = 'myselect'>
+                          <option disabled = "true" selected>select the columns </option>
+                         <option value="index" >Index</option>
+                            <option value="status" >Status</option>
+                             <option value="paper_number" >Paper Number</option>
+                              <option value="pmid" >Pmid</option>
+                               <option value="drug" >Drug</option>
+                                <option value="drug_id" >Drug Id</option>
+                                 <option value="target_s_or_mechanism_of_action" >Target/s or mechanism of action</option>
+                                  <option value="kegg_drug_id" >Kegg Drug Id</option>
+                                   <option value="drug_pubchem" >Drug Pubchem</option>
+                                   <option value="str_link_smiles" >Str Link Smiles</option>
+                                     <option value="combination" >Combination</option>
+                                      <option value="cancer_type" >Cancer Type</option>
+                                       <option value="animal_strain_used" >Animal Strain Used</option>
+                                        <option value="cell_line_used_to_induce_tumor_in_mice" >Cell Line Used To Induce Tumor In Mice</option>
+                                         <option value="dose" >Dose</option>
+                                          <option value="technique" >Technique</option>
+                                           <option value="patient_sample" >Patient Sample</option>
+                                           <option value="male_female" >Male Female</option>
+                                            <option value="median_age_range" >Median Age Range</option>
+                                             <option value="system" >System</option>
+                                              <option value="immune_cells" >Immune Cells</option>
+                                               <option value="cytokine" >Cytokine</option>
+                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>
+                                                 <option value="others" >Others</option>
+                                                  <option value="block" >Block</option>
+                                                   <option value="induce" >Induce</option>
+                                                   <option value="tertiary_remark" >Tertiary Remark</option>
+                                                    <option value="comment" >Comment</option>
+                                                    <option value="unnamed" >Unnamed</option>
+                                         
+                         
+                        
+                        </select>
+                      </div>
+                     
+                  </div>
+
+                  <div class="col-md-6">
+
+                      <input type="text"  name = 'texts' class="form-control" placeholder="search here">
+                      
+                  </div>
+
+                  <div class="col-md-3">
+
+                    <select name = 'fruits'>
+                      <option disabled = "true" selected>select</option>
+                      <option>AND</option>
+                      <option>OR</option>
+                      <option>NOT</option>
+                    </select>
+                    
+                     
+                  </div>
+                   
+                
+              </div>
+
+<div class="row g-3 mt-2">
+
+                  <div class="col-md-3">
+
+                      <div class="dropdown">
+                        <select name = 'col-name' id = 'myselect'>
+                          <option disabled = "true" selected>select the columns </option>
+                          <option value="index" >Index</option>
+                            <option value="status" >Status</option>
+                             <option value="paper_number" >Paper Number</option>
+                              <option value="pmid" >Pmid</option>
+                               <option value="drug" >Drug</option>
+                                <option value="drug_id" >Drug Id</option>
+                                 <option value="target_s_or_mechanism_of_action" >Target/s or mechanism of action</option>
+                                  <option value="kegg_drug_id" >Kegg Drug Id</option>
+                                   <option value="drug_pubchem" >Drug Pubchem</option>
+                                   <option value="str_link_smiles" >Str Link Smiles</option>
+                                     <option value="combination" >Combination</option>
+                                      <option value="cancer_type" >Cancer Type</option>
+                                       <option value="animal_strain_used" >Animal Strain Used</option>
+                                        <option value="cell_line_used_to_induce_tumor_in_mice" >Cell Line Used To Induce Tumor In Mice</option>
+                                         <option value="dose" >Dose</option>
+                                          <option value="technique" >Technique</option>
+                                           <option value="patient_sample" >Patient Sample</option>
+                                           <option value="male_female" >Male Female</option>
+                                            <option value="median_age_range" >Median Age Range</option>
+                                             <option value="system" >System</option>
+                                              <option value="immune_cells" >Immune Cells</option>
+                                               <option value="cytokine" >Cytokine</option>
+                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>
+                                                 <option value="others" >Others</option>
+                                                  <option value="block" >Block</option>
+                                                   <option value="induce" >Induce</option>
+                                                   <option value="tertiary_remark" >Tertiary Remark</option>
+                                                    <option value="comment" >Comment</option>
+                                                    <option value="unnamed" >Unnamed</option>
+                                         
+                         
+                        
+                        </select>
+                      </div>
+                     
+                  </div>
+
+                  <div class="col-md-6">
+
+                      <input type="text"  name = 'texts' class="form-control" placeholder="search here">
+                      
+                  </div>
+
+                  <div class="col-md-3">
+
+                    <select name = 'fruits'>
+                      <option disabled = "true" selected>select</option>
+                      <option>AND</option>
+                      <option>OR</option>
+                      <option>NOT</option>
+                    </select>
+                    
+                     
+                  </div>
+                   
+                
+              </div>
+
+            </div>
+            
+</div>
+<div class="row g-3 mt-2">
+
+                  <div class="col-md-3">
+
+                      <div class="dropdown">
+                        <select name = 'col-name' id = 'myselect'>
+                          <option disabled = "true" selected>select the columns </option>
+                          <option value="index" >Index</option>
+                            <option value="status" >Status</option>
+                             <option value="paper_number" >Paper Number</option>
+                              <option value="pmid" >Pmid</option>
+                               <option value="drug" >Drug</option>
+                                <option value="drug_id" >Drug Id</option>
+                                 <option value="target_s_or_mechanism_of_action" >Target/s or mechanism of action</option>
+                                  <option value="kegg_drug_id" >Kegg Drug Id</option>
+                                   <option value="drug_pubchem" >Drug Pubchem</option>
+                                   <option value="str_link_smiles" >Str Link Smiles</option>
+                                     <option value="combination" >Combination</option>
+                                      <option value="cancer_type" >Cancer Type</option>
+                                       <option value="animal_strain_used" >Animal Strain Used</option>
+                                        <option value="cell_line_used_to_induce_tumor_in_mice" >Cell Line Used To Induce Tumor In Mice</option>
+                                         <option value="dose" >Dose</option>
+                                          <option value="technique" >Technique</option>
+                                           <option value="patient_sample" >Patient Sample</option>
+                                           <option value="male_female" >Male Female</option>
+                                            <option value="median_age_range" >Median Age Range</option>
+                                             <option value="system" >System</option>
+                                              <option value="immune_cells" >Immune Cells</option>
+                                               <option value="cytokine" >Cytokine</option>
+                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>
+                                                 <option value="others" >Others</option>
+                                                  <option value="block" >Block</option>
+                                                   <option value="induce" >Induce</option>
+                                                   <option value="tertiary_remark" >Tertiary Remark</option>
+                                                    <option value="comment" >Comment</option>
+                                                    <option value="unnamed" >Unnamed</option>
+                                         
+                         
+                        
+                        </select>
+                      </div>
+                     
+                  </div>
+
+                  <div class="col-md-6">
+
+                      <input type="text"  name = 'texts' class="form-control" placeholder="search here">
+                      
+                  </div>
+
+                  <div class="col-md-3">
+
+                    <select name = 'fruits'>
+                      <option disabled = "true" selected>select</option>
+                      <option>AND</option>
+                      <option>OR</option>
+                      <option>NOT</option>
+                    </select>
+                    
+                     
+                  </div>
+                   
+                
+              </div>
+  
+            
+
+<div class="row g-5 mt-7">
+          <div class="col-md-3">
+
+           
+              <input type="submit" value="search check">
+                
+            </div>
+            
+             
+          </div>
+           <!---   <div class="row g-3 mt-2">
+
+                <div class="col-md-3">
+
+                    <div class="dropdown">
+                      <select name = 'col-name'>
+                        <option disabled = "true" selected>select the columns</option>
+                        {%for col in columns%}
+                          <option>{{col|truncatewords:3}}</option>
+                         {%endfor%}
+                      </select>
+                    </div>
+                   
+                </div>
+
+                <div class="col-md-6">
+
+                    <input type="text"  name = 'texts' class="form-control" placeholder="search here">
+                    
+                </div>
+
+                <div class="col-md-3">
+
+                  <select name = 'fruits'>
+                  <option disabled = "true" selected>select</option>
+                  <option>AND</option>
+                  <option>OR</option>
+                  <option>NOT</option>
+                </select>
+                
+                    
+                </div>
+                
+            </div>
+
+            <div class="row g-3 mt-2">
+
+              <div class="col-md-3">
+
+                  <div class="dropdown">
+                    <select name = 'col-name'>
+                      <option disabled = "true" selected>select the columns</option>
+                      {%for col in columns%}
+                      <option>{{col|truncatewords:3}}</option>
+                     {%endfor%}
+                    </select>
+                  </div>
+                 
+              </div>
+
+              <div class="col-md-6">
+
+                  <input type="text"  name = 'texts' class="form-control" placeholder="search here">
+                  
+              </div>
+
+              <div class="col-md-3">
+
+                <select name = 'fruits'>
+                  <option disabled = "true" selected>select</option>
+                  <option>AND</option>
+                  <option>OR</option>
+                  <option>NOT</option>
+                </select>
+                
+                  
+              </div>
+              
+          </div>
+          <div class="row g-3 mt-2">
+
+              <div class="col-md-3">
+
+                  <div class="dropdown">
+                    <select name = 'col-name'>
+                      <option disabled = "true" selected>select the columns</option>
+                      {%for col in columns%}
+                      <option>{{col|truncatewords:3}}</option>
+                     {%endfor%}
+                    </select>
+                  </div>
+                 
+              </div>
+
+              <div class="col-md-6">
+
+                  <input type="text"  name = 'texts' class="form-control" placeholder="search here">
+                  
+              </div>
+
+              <div class="col-md-3">
+
+                <select name = 'fruits'>
+                  <option disabled = "true" selected>select</option>
+                  <option>AND</option>
+                  <option>OR</option>
+                  <option>NOT</option>
+                </select>
+                
+                  
+              </div>
+              
+          </div>
+          <div class="row g-3 mt-2">
+
+            <div class="col-md-3">
+
+                <div class="dropdown">
+<select name = 'col-name'>
+                          <option disabled = "true" selected>select the columns</option>
+                          {%for col in columns%}
+                          <option>{{col|truncatewords:3}}</option>
+                         {%endfor%}
+                        </select>
+                </div>
+               
+            </div>
+
+            <div class="col-md-6">
+
+                <input type="text" name = 'texts' class="form-control" placeholder="search here">
+                
+            </div>
+
+            <div class="col-md-3">
+
+              <select name = 'fruits'>
+                <option disabled = "true" selected>select</option>
+                <option>AND</option>
+                <option>OR</option>
+                <option>NOT</option>
+              </select>
+            </div>
+            
+        </div>
+
+
+        <div class="row g-5 mt-7">
+          <div class="col-md-3">
+
+           
+              <input type="submit" value="search check">
+                
+            </div>
+            
+             
+          </div>
+
+         
+         
+      </div>--->
+    </form>
+
+             
+   
+</div>
+
+</div>
+</div>
+
+
+              </div>
+
+
+              
+
+
+      
+          </div>
+          
+      </div>
+      
+  </div>
+
+  
+  
+
+
+</div>
+
+<style>
+  div.background {
+  background: url(https://img.freepik.com/free-vector/chemical-laboratory-workspace-design-concept_1284-11560.jpg?w=740&t=st=1673797666~exp=1673798266~hmac=e2b6324fc5726b45a6015f7cf5b0c3c8bc3c2482623e7694400dab8fa8f289b7) repeat;
+  border: 1px solid black;
+  padding-left: 12px;
+}
+
+  div.transbox {
+    background-color: white;
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+}
+
+div.transbox p {
+  margin: 2%;
+  font-weight: bold;
+  color: #000000;
+}
+   input[type=submit]{
+
+  background-color: #3792cb;
+  color: white;
+  }
+  body{
+
+    background-color: #00838F;
+}
+
+
+.advanced{
+
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.btn-secondary,
+.btn-secondary:focus,
+.btn-secondary:active
+
+
+ {
+    color: #fff;
+    background-color: #00838f !important;
+    border-color: #00838f !important;
+    box-shadow: none;
+}
+
+
+.advanced{
+
+    color: #00838f !important;
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border: 1px solid #00838f;
+
+
+}select {
+  width: 200px;
+  max-width: 100%;
+  /* So it doesn't overflow from it's parent */
+}
+
+option {
+  /* wrap text in compatible browsers */
+  -moz-white-space: pre-wrap;
+  -o-white-space: pre-wrap;
+  white-space: pre-wrap;
+  /* hide text that can't wrap with an ellipsis */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* add border after every option */
+  border-bottom: 1px solid #DDD;
+}
+</style>
+
+<script>
+
+</script>
