@@ -5,7 +5,7 @@ $(document).ready(function(){
     var maxField = 10; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector
     var wrapper = $('.field_wrapper'); //Input field wrapper
-    var fieldHTML = '<div><div class="row g-3 mt-2"><div class="col-md-3"><div class="dropdown"><select name = "col-name" id="myselect"> <option disabled = "true" selected>select the columns </option><option value="index" >Index</option><option value="status" >Status</option>                             <option value="paper_number" >Paper Number</option> <option value="pmid" >Pmid</option>                               <option value="drug" >Drug</option>                                <option value="drug_id" >Drug Id</option>                                 <option value="target_s_or_mechanism_of_action" >Target/s or mechanism of action</option>                                  <option value="kegg_drug_id" >Kegg Drug Id</option>                                   <option value="drug_pubchem" >Drug Pubchem</option>                                   <option value="str_link_smiles" >Str Link Smiles</option>                                     <option value="combination" >Combination</option>                                      <option value="cancer_type" >Cancer Type</option>                                       <option value="animal_strain_used" >Animal Strain Used</option>                                        <option value="cell_line_used_to_induce_tumor_in_mice" >Cell Line Used To Induce Tumor In Mice</option><option value="dose" >Dose</option>                                          <option value="technique" >Technique</option>                                           <option value="patient_sample" >Patient Sample</option>                                           <option value="male_female" >Male Female</option>                                            <option value="median_age_range" >Median Age Range</option>                                             <option value="system" >System</option>                                              <option value="immune_cells" >Immune Cells</option>                                               <option value="cytokine" >Cytokine</option>                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>                                                 <option value="others" >Others</option>                                                  <option value="block" >Block</option>                                                   <option value="induce" >Induce</option>                                                   <option value="tertiary_remark" >Tertiary Remark</option>                                                    <option value="comment" >Comment</option>                                                    <option value="unnamed" >Unnamed</option>  </select> </div></div> <div class="col-md-6"><input type="text"  name = "texts" class="form-control" placeholder="search here"></div><div class="col-md-3">                    <select name = "fruits"><option disabled = "true" selected>select</option><option>AND</option><option>OR</option><option>NOT</option></select> </div></div>'; 
+    var fieldHTML = '<div><div class="row g-3 mt-2"><div class="col-md-3"><div class="dropdown"><select name = "col-name" id="myselect"> <option disabled = "true" selected>select the columns </option><option value="index" >Index</option><option value="status" >Status</option>                             <option value="paper_number" >Paper Number</option> <option value="pmid" >Pmid</option>                               <option value="drug" >Drug</option>                                <option value="drug_id" >Drug Id</option>                                 <option value="target_s_or_mechanism_of_action" >Target/s or mechanism of action</option>                                  <option value="kegg_drug_id" >Kegg Drug Id</option>                                   <option value="drug_pubchem" >Drug Pubchem</option>                                   <option value="str_link_smiles" >Str Link Smiles</option>                                     <option value="combination" >Combination</option>                                      <option value="cancer_type" >Cancer Type</option>                                       <option value="animal_strain_used" >Animal Strain Used</option>                                        <option value="cell_line_used_to_induce_tumor_in_mice" >Cell Line Used To Induce Tumor In Mice</option><option value="dose" >Dose</option>                                          <option value="technique" >Technique</option>                                           <option value="patient_sample" >Patient Sample</option>                                           <option value="male_female" >Male Female</option>                                            <option value="median_age_range" >Median Age Range</option>  <option value="system" >System</option>                                              <option value="cell_dose" >Cell Dose</option>                                             <option value="cell_technique" >Cell Technique</option>                                                <option value="numbers__increased_immune_cells" >Numbers Increased Immune Cells</option>                                                 <option value="immune_system_cytokine" >Immune System Cytokine</option>                                                  <option value="immune_system_cd_cam_mhc" >Immune System Cd Cam Mhc</option>                                                   <option value="immune_system_others" >Immune System Others</option>                                                   <option value="numbers_decreased_immune_cells" >Numbers Decreased Immune Cells</option>                                                    <option value="immune_system_number_increased_cytokine" >Immune System Number Increased Cytokine</option>                                                    <option value="immune_system_number_increased_cd_cam_mhc" >Immune System Number Increased Cd Cam Mhc</option>                                                    <option value="immune_system_number_increased_others" >Immune System Number Increased Others</option>                                                   <option value="unaffected_immune_cells" >Unaffected Immune Cells</option>                                                   <option value="immune_system_uneffected_cytokine" >Immune System Uneffected Cytokine</option>                                                    <option value="immune_system_uneffected_cd_cam_mhc" >Immune System Uneffected Cd Cam Mhc</option>                                                    <option value="immune_system_uneffected_others" >Immune System Uuneffected Others</option>                                                                                  <option value="negative_immune_cells" >Negative Immune Cells</option>                                                   <option value="immune_system_negative_cytokine" >Immune System Negative Cytokine</option>                                                   <option value="immune_system_negative_cd_cam_mhc" >Immune System Negative Cd Cam Mhc</option>                                                    <option value="immune_system_negative_others" >Immune System Negative Others</option>                                                    <option value="technique.1" >Technique.1</option>                                                  <option value="block" >Block</option>                                                   <option value="induce" >Induce</option>                                                   <option value="tertiary_remark" >Tertiary Remark</option>                                                    <option value="comment" >Comment</option>                                                    <option value="unnamed" >Unnamed</option>  </select> </div></div> <div class="col-md-6"><input type="text"  name = "texts" class="form-control" placeholder="search here"></div><div class="col-md-3">                    <select name = "fruits"><option disabled = "true" selected>select</option><option>AND</option><option>OR</option></select> </div></div>'; 
     var x = 1; //Initial field counter is 1
     
     //Once add button is clicked
@@ -78,18 +78,35 @@ $(document).ready(function(){
                                            <option value="male_female" >Male Female</option>
                                             <option value="median_age_range" >Median Age Range</option>
                                              <option value="system" >System</option>
-                                              <option value="immune_cells" >Immune Cells</option>
-                                               <option value="cytokine" >Cytokine</option>
-                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>
-                                                 <option value="others" >Others</option>
-                                                  <option value="block" >Block</option>
+                                              <option value="cell_dose" >Cell Dose</option>
+                                               <option value="cell_technique" >Cell Technique</option>
+                                                <option value="numbers__increased_immune_cells" >Numbers Increased Immune Cells</option>
+                                                 <option value="immune_system_cytokine" >Immune System Cytokine</option>
+                                                  <option value="immune_system_cd_cam_mhc" >Immune System Cd Cam Mhc</option>
+                                                   <option value="immune_system_others" >Immune System Others</option>
+                                                   <option value="numbers_decreased_immune_cells" >Numbers Decreased Immune Cells</option>
+                                                    <option value="immune_system_number_increased_cytokine" >Immune System Number Increased Cytokine</option>
+                                                    <option value="immune_system_number_increased_cd_cam_mhc" >Immune System Number Increased Cd Cam Mhc</option>
+                                                    <option value="immune_system_number_increased_others" >Immune System Number Increased Others</option>
+                                                   <option value="unaffected_immune_cells" >Unaffected Immune Cells</option>
+                                                   <option value="immune_system_uneffected_cytokine" >Immune System Uneffected Cytokine</option>
+                                                    <option value="immune_system_uneffected_cd_cam_mhc" >Immune System Uneffected Cd Cam Mhc</option>
+                                                    <option value="immune_system_uneffected_others" >Immune System Uuneffected Others</option>
+                                         
+                                         <option value="negative_immune_cells" >Negative Immune Cells</option>
+                                                   <option value="immune_system_negative_cytokine" >Immune System Negative Cytokine</option>
+                                                   <option value="immune_system_negative_cd_cam_mhc" >Immune System Negative Cd Cam Mhc</option>
+                                                    <option value="immune_system_negative_others" >Immune System Negative Others</option>
+                                                    <option value="technique.1" >Technique.1</option>
+                                                     <option value="block" >Block</option>
                                                    <option value="induce" >Induce</option>
                                                    <option value="tertiary_remark" >Tertiary Remark</option>
                                                     <option value="comment" >Comment</option>
                                                     <option value="unnamed" >Unnamed</option>
                                          
+                                         
                          
-                        
+                    
                         </select>
                       </div>
                     
@@ -107,7 +124,7 @@ $(document).ready(function(){
                       <option disabled = "true" selected>select</option>
                       <option>AND</option>
                       <option>OR</option>
-                      <option>NOT</option>
+                      
                     </select>
                     
                      
@@ -142,10 +159,27 @@ $(document).ready(function(){
                                            <option value="male_female" >Male Female</option>
                                             <option value="median_age_range" >Median Age Range</option>
                                              <option value="system" >System</option>
-                                              <option value="immune_cells" >Immune Cells</option>
-                                               <option value="cytokine" >Cytokine</option>
-                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>
-                                                 <option value="others" >Others</option>
+                                              <option value="cell_dose" >Cell Dose</option>
+                                               <option value="cell_technique" >Cell Technique</option>
+                                                <option value="numbers__increased_immune_cells" >Numbers Increased Immune Cells</option>
+                                                 <option value="immune_system_cytokine" >Immune System Cytokine</option>
+                                                  <option value="immune_system_cd_cam_mhc" >Immune System Cd Cam Mhc</option>
+                                                   <option value="immune_system_others" >Immune System Others</option>
+                                                   <option value="numbers_decreased_immune_cells" >Numbers Decreased Immune Cells</option>
+                                                    <option value="immune_system_number_increased_cytokine" >Immune System Number Increased Cytokine</option>
+                                                    <option value="immune_system_number_increased_cd_cam_mhc" >Immune System Number Increased Cd Cam Mhc</option>
+                                                    <option value="immune_system_number_increased_others" >Immune System Number Increased Others</option>
+                                                   <option value="unaffected_immune_cells" >Unaffected Immune Cells</option>
+                                                   <option value="immune_system_uneffected_cytokine" >Immune System Uneffected Cytokine</option>
+                                                    <option value="immune_system_uneffected_cd_cam_mhc" >Immune System Uneffected Cd Cam Mhc</option>
+                                                    <option value="immune_system_uneffected_others" >Immune System Uuneffected Others</option>
+                                         
+                                         <option value="negative_immune_cells" >Negative Immune Cells</option>
+                                                   <option value="immune_system_negative_cytokine" >Immune System Negative Cytokine</option>
+                                                   <option value="immune_system_negative_cd_cam_mhc" >Immune System Negative Cd Cam Mhc</option>
+                                                    <option value="immune_system_negative_others" >Immune System Negative Others</option>
+                                                    <option value="technique.1" >Technique.1</option>
+
                                                   <option value="block" >Block</option>
                                                    <option value="induce" >Induce</option>
                                                    <option value="tertiary_remark" >Tertiary Remark</option>
@@ -171,7 +205,7 @@ $(document).ready(function(){
                       <option disabled = "true" selected>select</option>
                       <option>AND</option>
                       <option>OR</option>
-                      <option>NOT</option>
+                  
                     </select>
                     
                      
@@ -207,10 +241,27 @@ $(document).ready(function(){
                                            <option value="male_female" >Male Female</option>
                                             <option value="median_age_range" >Median Age Range</option>
                                              <option value="system" >System</option>
-                                              <option value="immune_cells" >Immune Cells</option>
-                                               <option value="cytokine" >Cytokine</option>
-                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>
-                                                 <option value="others" >Others</option>
+                                             <option value="cell_dose" >Cell Dose</option>
+                                               <option value="cell_technique" >Cell Technique</option>
+                                                <option value="numbers__increased_immune_cells" >Numbers Increased Immune Cells</option>
+                                                 <option value="immune_system_cytokine" >Immune System Cytokine</option>
+                                                  <option value="immune_system_cd_cam_mhc" >Immune System Cd Cam Mhc</option>
+                                                   <option value="immune_system_others" >Immune System Others</option>
+                                                   <option value="numbers_decreased_immune_cells" >Numbers Decreased Immune Cells</option>
+                                                    <option value="immune_system_number_increased_cytokine" >Immune System Number Increased Cytokine</option>
+                                                    <option value="immune_system_number_increased_cd_cam_mhc" >Immune System Number Increased Cd Cam Mhc</option>
+                                                    <option value="immune_system_number_increased_others" >Immune System Number Increased Others</option>
+                                                   <option value="unaffected_immune_cells" >Unaffected Immune Cells</option>
+                                                   <option value="immune_system_uneffected_cytokine" >Immune System Uneffected Cytokine</option>
+                                                    <option value="immune_system_uneffected_cd_cam_mhc" >Immune System Uneffected Cd Cam Mhc</option>
+                                                    <option value="immune_system_uneffected_others" >Immune System Uuneffected Others</option>
+                                         
+                                         <option value="negative_immune_cells" >Negative Immune Cells</option>
+                                                   <option value="immune_system_negative_cytokine" >Immune System Negative Cytokine</option>
+                                                   <option value="immune_system_negative_cd_cam_mhc" >Immune System Negative Cd Cam Mhc</option>
+                                                    <option value="immune_system_negative_others" >Immune System Negative Others</option>
+                                                    <option value="technique.1" >Technique.1</option>
+
                                                   <option value="block" >Block</option>
                                                    <option value="induce" >Induce</option>
                                                    <option value="tertiary_remark" >Tertiary Remark</option>
@@ -236,8 +287,7 @@ $(document).ready(function(){
                       <option disabled = "true" selected>select</option>
                       <option>AND</option>
                       <option>OR</option>
-                      <option>NOT</option>
-                    </select>
+                                         </select>
                     
                      
                   </div>
@@ -275,10 +325,27 @@ $(document).ready(function(){
                                            <option value="male_female" >Male Female</option>
                                             <option value="median_age_range" >Median Age Range</option>
                                              <option value="system" >System</option>
-                                              <option value="immune_cells" >Immune Cells</option>
-                                               <option value="cytokine" >Cytokine</option>
-                                                <option value="cd_cam_mhc" >Cd Cam Mhc</option>
-                                                 <option value="others" >Others</option>
+                                              <option value="cell_dose" >Cell Dose</option>
+                                               <option value="cell_technique" >Cell Technique</option>
+                                                <option value="numbers__increased_immune_cells" >Numbers Increased Immune Cells</option>
+                                                 <option value="immune_system_cytokine" >Immune System Cytokine</option>
+                                                  <option value="immune_system_cd_cam_mhc" >Immune System Cd Cam Mhc</option>
+                                                   <option value="immune_system_others" >Immune System Others</option>
+                                                   <option value="numbers_decreased_immune_cells" >Numbers Decreased Immune Cells</option>
+                                                    <option value="immune_system_number_increased_cytokine" >Immune System Number Increased Cytokine</option>
+                                                    <option value="immune_system_number_increased_cd_cam_mhc" >Immune System Number Increased Cd Cam Mhc</option>
+                                                    <option value="immune_system_number_increased_others" >Immune System Number Increased Others</option>
+                                                   <option value="unaffected_immune_cells" >Unaffected Immune Cells</option>
+                                                   <option value="immune_system_uneffected_cytokine" >Immune System Uneffected Cytokine</option>
+                                                    <option value="immune_system_uneffected_cd_cam_mhc" >Immune System Uneffected Cd Cam Mhc</option>
+                                                    <option value="immune_system_uneffected_others" >Immune System Uuneffected Others</option>
+                                         
+                                         <option value="negative_immune_cells" >Negative Immune Cells</option>
+                                                   <option value="immune_system_negative_cytokine" >Immune System Negative Cytokine</option>
+                                                   <option value="immune_system_negative_cd_cam_mhc" >Immune System Negative Cd Cam Mhc</option>
+                                                    <option value="immune_system_negative_others" >Immune System Negative Others</option>
+                                                    <option value="technique.1" >Technique.1</option>
+
                                                   <option value="block" >Block</option>
                                                    <option value="induce" >Induce</option>
                                                    <option value="tertiary_remark" >Tertiary Remark</option>
@@ -304,7 +371,7 @@ $(document).ready(function(){
                       <option disabled = "true" selected>select</option>
                       <option>AND</option>
                       <option>OR</option>
-                      <option>NOT</option>
+             
                     </select>
                     
                      

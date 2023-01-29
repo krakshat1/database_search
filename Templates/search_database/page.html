@@ -38,13 +38,48 @@
         <a href="#sys" class="list-group-item list-group-item-action py-2 ripple"><i
             class="fas fa-building fa-fw me-3"></i><span>System</span></a>
         <a href="#imu" class="list-group-item list-group-item-action py-2 ripple"><i
-            class="fas fa-calendar fa-fw me-3"></i><span>Immune Cells</span></a>
+            class="fas fa-calendar fa-fw me-3"></i><span>Cell Dose</span></a>
         <a href="#cyt" class="list-group-item list-group-item-action py-2 ripple"><i
-            class="fas fa-users fa-fw me-3"></i><span>Cytokine</span></a>
+            class="fas fa-users fa-fw me-3"></i><span>Cell Technique</span></a>
         <a href="#cd" class="list-group-item list-group-item-action py-2 ripple"><i
-            class="fas fa-money-bill fa-fw me-3"></i><span>CD CAM MHC</span></a>
+            class="fas fa-money-bill fa-fw me-3"></i><span>Numbers Increased Immune Cells</span></a>
         <a href="#oth" class="list-group-item list-group-item-action py-2 ripple"><i
-            class="fas fa-calendar fa-fw me-3"></i><span>Others</span></a>
+            class="fas fa-calendar fa-fw me-3"></i><span>Immune System Cytokine</span></a>
+            <a href="#isc" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-calendar fa-fw me-3"></i><span>Immune System CD CAM MHC</span></a>
+            
+        <a href="#iso" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-users fa-fw me-3"></i><span>Immune System Others</span></a>
+        <a href="#ndi" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Number Decreased Immune Cells</span></a>
+       <a href="#nic" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Immune System Number Increased Cytokine</span></a>
+
+      <a href="#nid" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Immune System Number Increased CD CAM MHC</span></a><a href="#nio" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-calendar fa-fw me-3"></i><span>Immune System Number Increased Others</span></a>
+            
+        <a href="#uic" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-users fa-fw me-3"></i><span>Unaffected Immune Cells</span></a>
+        <a href="#suc" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Immune System Uneffected Cytokine</span></a>
+       <a href="#ucd" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Immune System Uneffected CD CAM MHC</span></a>
+
+      <a href="#suo" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Immune System Uneffected Others</span></a><a href="#nim" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-calendar fa-fw me-3"></i><span>Negative Immune Cells</span></a>
+            
+        <a href="#nig" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-users fa-fw me-3"></i><span>Immune System Negative Cytokine</span></a>
+        <a href="#snd" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Immune System Negative CD CAM MHC</span></a>
+       <a href="#sno" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Immune System Negative Others</span></a>
+
+      <a href="#tech" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Technique.1</span></a>
+
         <a href="#blo" class="list-group-item list-group-item-action py-2 ripple"><i
             class="fas fa-users fa-fw me-3"></i><span>Block</span></a>
         <a href="#ind" class="list-group-item list-group-item-action py-2 ripple"><i
@@ -75,16 +110,7 @@
 
 
       <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row">
-        <!-- Notification dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-          </a>
-         
-        <!-- Avatar -->
+      
        
     </div>
     <!-- Container wrapper -->
@@ -128,18 +154,31 @@
   <div class="card-header">
    <h5> Summary</h5>
   </div>
+  {%for i in summary%}
   <div class="card-body">
-    <p class="card-title">{{summary}}</p>
-<p><a href="{{u}}">Know More Text</a></p>
-  </div>
-</div>
+    <p class="card-title">{{i}}</p>
 
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{url}}" alt="Card image cap">
+  </div>
+  {%endfor%}
+</div>
+{%for u1 in urls %}
+<p><a href="{{u1}}">Know More Text</a></p>
+{%endfor%}
+</section>
+
+<section>
+<div class="card-deck" style="width: 40rem; height: 20rem;">
+{%for i in img_url%}
+<div class="card" style="width: 25rem; height: 20rem;">
+  <img class="card-img-top" src="{{i}}" alt="Card image cap" style="width:100%; height:100%;">
   <div class="card-body">
     
   </div>
+ 
 </div>
+ {%endfor%}
+</div>
+
 </section>
 <section id = "kegg">
   
@@ -147,8 +186,10 @@
   <div class="card-header">
     <h5>KEGG</h5>
   </div>
+  {%for i in dfs%}
   <div class="card-body">
     <h5 class="card-title"></h5>
+    
     <table class="table">
                       <thead>
                         <tr>
@@ -156,40 +197,53 @@
                           <th>SCORE</th>
                         </tr>
                       </thead>
-                      <tbody>
-                         {% if di %}   
 
-    {% for i in di %} 
+                      <tbody>
+                        {%if i%}
+                       
+
+    {% for j in i %} 
 
       <tr style="border: 1.5px solid grey;"> 
 
-        <td>{{i.entry}}</a></td> 
+        <td>{{j.entry}}</a></td> 
 
-        <td>{{i.score}}</td> 
+        <td>{{j.score}}</td> 
         
       </tr> 
 
     {% endfor %} 
+{%endif%}
 
-    {% endif %} 
 
                       </tbody>
+                        
 
     
     
 
 
 </table>
+
+
+</div>
+{%endfor%}
+</div>
+{%for u2 in urls2%}
 <p><a href="{{u2}}">Know More Text</a></p>
-</div>
-</div>
-
-
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{url2}}" alt="Card image cap">
+{%endfor%}
+</section>
+<section>
+<div class="card-deck"style="width: 40rem; height: 20rem;">
+{%for i in img_url2%}
+<div class="card" style="width:25rem; height:20rem;">
+  <img class="card-img-top" src="{{i}}" alt="Card image cap" style="width:100%; height:100%;">
   <div class="card-body">
     
   </div>
+ 
+</div>
+ {%endfor%}
 </div>
 
 </section>
@@ -323,13 +377,15 @@
   </div>
 </div>
 </Section>
+
+
 <Section id = "imu">
 <div class="card" id="to">
   <div class="card-header">
-    <h5>Immune Cells</h5>
+    <h5>Cell Dose</h5>
       </div>
   <div class="card-body">
-    {%for i in data1.immune_cells.values%}
+    {%for i in data1.cell_dose.values%}
     <p class="card-title">{{i}}</p>
     {%endfor%}
    
@@ -339,10 +395,10 @@
 <Section id = "cyt">
 <div class="card" id="to">
   <div class="card-header">
-    <h5>Cytokine</h5>
+    <h5>Cell Technique</h5>
       </div>
   <div class="card-body">
-    {%for i in data1.cytokine.values%}
+    {%for i in data1.cell_technique.values%}
     <p class="card-title">{{i}}</p>
     {%endfor%}
    
@@ -352,10 +408,10 @@
 <section id = "cd">
 <div class="card" id="to">
   <div class="card-header">
-    <h5>CD CAM MHC</h5>
+    <h5>Numbers Increased Immune Cells</h5>
       </div>
   <div class="card-body">
-    {%for i in data1.cd_cam_mhc.values%}
+    {%for i in data1.numbers__increased_immune_cells.values%}
     <p class="card-title">{{i}}</p>
     {%endfor%}
    
@@ -365,16 +421,212 @@
 <Section id = "oth">
 <div class="card" id="to">
   <div class="card-header">
-    <h5>Others</h5>
+    <h5>Immune System Cytokine</h5>
       </div>
   <div class="card-body">
-    {%for i in data1.others.values%}
+    {%for i in data1.immune_system_cytokine.values%}
     <p class="card-title">{{i}}</p>
     {%endfor%}
    
   </div>
 </div>
 </Section>
+<Section id = "isc">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System CD CAM MHC</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_cd_cam_mhc.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "iso">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Others </h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_others.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "ndi">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Number Decreased Immune Cells </h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.numbers_decreased_immune_cells.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "nic">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Number Increased Cytokine</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_number_increased_cytokine.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "nid">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Number Increased CD CAM MHC</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_number_increased_cd_cam_mhc.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "nio">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Number Increased Others</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_number_increased_others.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "uic">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Unaffected Immune Cells</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.unaffected_immune_cells.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "suc">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Uneffected Cytokine</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_uneffected_cytokine.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "ucd">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Uneffected CD CAM MHC</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_uneffected_cd_cam_mhc.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "suo">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Uneffected Others</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_uneffected_others.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "nim">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Negative Immune Cells</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.negative_immune_cells.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "neg">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Negative Cytokine</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_negative_cytokine.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "snd">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Negative CD CAM MHC</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_negative_cd_cam_mhc.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "sno">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Immune System Negative Others</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.immune_system_negative_others.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+<Section id = "tech">
+<div class="card" id="to">
+  <div class="card-header">
+    <h5>Technique.1</h5>
+      </div>
+  <div class="card-body">
+    {%for i in data1.technique.1.values%}
+    <p class="card-title">{{i}}</p>
+    {%endfor%}
+   
+  </div>
+</div>
+</Section>
+
 <section id = "blo">
 <div class="card" id="to">
   <div class="card-header">
@@ -432,14 +684,12 @@
 <!--Main layout-->
 <style type="text/css">
   body {
-background-color: #fffffTUTOR     
-Pr i vate     De c 2019 – Fe b 2022 
-
+background-color: #fffff
 ;
 }
 @media (min-width: 991.98px) {
 main {
-padding-left: 240px;
+padding-left: 250px;
 }
 }
 
