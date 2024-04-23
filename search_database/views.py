@@ -15,7 +15,7 @@ def search(request):
         connection = psycopg2.connect(user="postgres",
                                     password="Bhadra123",
                                     host="127.0.0.1",
-                                    port="5433",
+                                    port="5432",
                                     database="postgresql")
     except (Exception, psycopg2.Error) as error:
         print("Error while fetching data from PostgreSQL", error)
@@ -35,13 +35,6 @@ def search(request):
             coulumns = request.POST.getlist('texts')
             operator = request.POST.getlist('fruits')
             col_names = request.POST.getlist('col-name')
-            # print(fruits)
-            # print(col_names)
-            # print(coulumns)
-
-            # print(col_names)
-            # print(fruits)
-            # print('|'.join(filter(None, coulumns)))  
             d = coulumns[0]
             s =  "||' '||"
             answer = s.join(filter(None, col_names))
@@ -129,7 +122,7 @@ def page(request,pk):
         connection = psycopg2.connect(user="postgres",
                                     password="Bhadra123",
                                     host="127.0.0.1",
-                                    port="5433",
+                                    port="5432",
                                     database="postgresql")
     except (Exception, psycopg2.Error) as error:
         print("Error while fetching data from PostgreSQL", error)

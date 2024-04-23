@@ -8,7 +8,7 @@ class Command(BaseCommand):
   help = "A command to add data from an Excel file to the database"
 
   def handle(self, *args, **options):
-    excel_file = r'C:\Users\AVINASH\Desktop\filtered_data2.xlsx'
+    excel_file = r'filtered_data2.xlsx'
     data = pd.read_excel(excel_file)
     
     # header_row = 0
@@ -36,7 +36,7 @@ class Command(BaseCommand):
     database_name = settings.DATABASES['default']['NAME']
 
     # engine = create_engine('sqlite:///db.sqlite3')
-    database_url = 'postgresql://{user}:{password}@localhost:5433/{database_name}'.format( user=user,password=password,database_name=database_name,)
+    database_url = 'postgresql://{user}:{password}@localhost:5432/{database_name}'.format( user=user,password=password,database_name=database_name,)
 
     engine = create_engine(database_url, echo=False)
 
